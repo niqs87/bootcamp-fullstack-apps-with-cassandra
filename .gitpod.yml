@@ -1,5 +1,8 @@
 tasks:
   - name: setup
+    env:
+        CQLENG_ALLOW_SCHEMA_MANAGEMENT: 1
+        FLASK_APP: api
     before: |
       echo "Setting up, please wait!"
       cd /workspace/bootcamp-fullstack-apps-with-cassandra 
@@ -12,11 +15,20 @@ tasks:
           && tar xvzf cqlsh-astra.tar.gz \
           && rm -f cqlsh-astra.tar.gz
       cp ~/.zshrc ~/.zshrc.init
-ports: 
+      if [ -f /workspace/bootcamp-fullstack-apps-with-cassandra/zshrcinit ]; then
+          cp /workspace/bootcamp-fullstack-apps-with-cassandra/zshrcinit ~/.zshrc
+      fi
+      pip3 install -r week4-api-microservices/python/requirements.txt
+      npm i --prefix week4-api-microservices/javascript
+ports:
   - port: 5005
   - port: 8080
+    visibility: public
   - port: 8081
-    onOpen: open-browser 
+    onOpen: open-browser
+  - port: 9191
+    visibility: public
+    onOpen: open-browser
 
 github:
   prebuilds:
@@ -28,7 +40,7 @@ github:
     addComment: false
     addBadge: true
     addLabel: false
- 
+
 vscode:
   extensions:
     - datastax.astra-for-vs-code
