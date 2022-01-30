@@ -8,9 +8,9 @@ from cassandra.auth import PlainTextAuthProvider
 # This is the Zip file you downloaded
 SECURE_CONNECT_BUNDLE = '/workspace/bootcamp-fullstack-apps-with-cassandra/secure-connect-workshops.zip'
 # This is the "Client Id" value you obtained earlier
-USERNAME = ""
+USERNAME = "FrPJbiHBGZRlOFeiknAYBqPL"
 # This is the "Client Secret" value you obtained earlier
-PASSWORD = ""
+PASSWORD = "PRdqQkiemM76D-dNTZeTwz5aU2s2slLlQkoUB3ADhkxbIMvz+pnI.+9MUiXbMXn3RylTjpFCvhIj8tMQDDFLY6i8C9KU4ol1..o3SxbXDAni5uRdA6BfMPFWcJrJYn_W"
 # This is the keyspace name
 KEYSPACE = "todos"
 

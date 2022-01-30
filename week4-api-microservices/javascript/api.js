@@ -15,6 +15,13 @@ app.get("/api/v1/:userId/todos", async (req, res) => {
   res.json(todoRes);
 });
 
+// app.get("/api/v1/:userId/todos/completed", async (req, res) => {
+//   const todoRes = await todos.getCompletedTodos(req.params.userId, {
+//     ...req.body,
+//   });
+//   res.json(todoRes);
+// });
+
 app.get("/api/v1/:userId/todos/:itemId", async (req, res) => {
   const todoRes = await todos.getTodo(req.params.userId, req.params.itemId);
   res.json(todoRes);
@@ -28,6 +35,7 @@ app.post("/api/v1/:userId/todos", async (req, res) => {
   });
   res.json(todoRes);
 });
+
 
 app.patch("/api/v1/:userId/todos/:itemId", async (req, res) => {
   const todoRes = await todos.updateTodo(req.params.userId, req.params.itemId, {

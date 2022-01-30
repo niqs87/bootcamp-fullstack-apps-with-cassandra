@@ -43,6 +43,16 @@ module.exports = {
     }
     return [];
   },
+  getCompletedTodos: async (userId) => {
+    const res = await todoMapper.find({ user_id: userId });
+    if (res.length) {
+      return res
+        .toArray()
+        .filter((item) => item.completed === true)
+        .map((item) => ({ ...item, item_id: item.item_id.toString() }));
+    }
+    return [];
+  },
   deleteTodos: async () => {
     await client.execute("TRUNCATE TABLE todoitems");
     return [];
